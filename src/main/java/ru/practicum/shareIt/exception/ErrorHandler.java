@@ -27,7 +27,7 @@ public class ErrorHandler {
         return Map.of("error", e.getMessage());
     }
 
-   @ExceptionHandler
+    @ExceptionHandler
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public Map<String, String> handleMethodArgumentNotValidException(final MethodArgumentNotValidException ex) {
 
@@ -41,9 +41,9 @@ public class ErrorHandler {
         return errors;
     }
 
-/*    @ExceptionHandler
+    @ExceptionHandler
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     public Map<String, String> handleInternalServerError(final Throwable e) {
         return Map.of("error", "Произошла непредвиденная ошибка.");
-    }*/
+    }
 }
