@@ -9,7 +9,6 @@ import ru.practicum.shareIt.user.User;
 import ru.practicum.shareIt.user.dao.UserDao;
 import ru.practicum.shareIt.user.dto.UserDto;
 import ru.practicum.shareIt.user.mapper.UserMapper;
-
 import java.util.Collection;
 import java.util.stream.Collectors;
 
@@ -34,7 +33,6 @@ public class UserServiceImpl implements UserService {
             log.warn("Пользователь с id = {} не найден", id);
             throw new NotFoundException("Пользователь не был найден");
         }
-
         return UserMapper.toUserDto(user);
     }
 
