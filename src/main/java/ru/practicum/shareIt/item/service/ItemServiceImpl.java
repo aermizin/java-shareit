@@ -20,6 +20,7 @@ import java.util.stream.Collectors;
 @Slf4j
 public class ItemServiceImpl implements ItemService {
     private final UserService userService;
+
     private final ItemDao itemDao;
 
     @Override

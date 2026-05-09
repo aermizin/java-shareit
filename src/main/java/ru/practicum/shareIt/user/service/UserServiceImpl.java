@@ -10,7 +10,6 @@ import ru.practicum.shareIt.user.dao.UserDao;
 import ru.practicum.shareIt.user.dto.UserDto;
 import ru.practicum.shareIt.user.mapper.UserMapper;
 
-
 import java.util.Collection;
 import java.util.stream.Collectors;
 
