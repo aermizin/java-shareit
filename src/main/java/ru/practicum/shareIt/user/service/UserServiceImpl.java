@@ -17,6 +17,7 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 @Slf4j
 public class UserServiceImpl implements UserService {
+
     private final UserDao userDao;
 
     @Override
@@ -25,6 +26,7 @@ public class UserServiceImpl implements UserService {
                 .map(UserMapper::toUserDto)
                 .collect(Collectors.toList());
     }
+
 
     @Override
     public UserDto findUser(Long id) {
@@ -37,12 +39,14 @@ public class UserServiceImpl implements UserService {
         return UserMapper.toUserDto(user);
     }
 
+
     @Override
     public UserDto create(User user) {
         validationUser(user);
         User newUser = userDao.createUser(user);
         return UserMapper.toUserDto(newUser);
     }
+
 
     @Override
     public UserDto updated(Long userId, User user) {
@@ -56,6 +60,7 @@ public class UserServiceImpl implements UserService {
         User updatedUser = userDao.updatedUser(user);
         return UserMapper.toUserDto(updatedUser);
     }
+
 
     @Override
     public void deleteUser(Long id) {
