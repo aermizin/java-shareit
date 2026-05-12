@@ -7,12 +7,13 @@ import ru.practicum.shareIt.item.model.Item;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Component
 @RequiredArgsConstructor
 public class InMemoryItemDao implements ItemDao {
-    Map<Long, Item> items = new HashMap<>();
+    private final Map<Long, Item> items = new HashMap<>();
 
     private long nextItemId = 1;
 
@@ -24,8 +25,8 @@ public class InMemoryItemDao implements ItemDao {
     }
 
     @Override
-    public Item getItem(Long id) {
-        return items.get(id);
+    public Optional<Item> getItem(Long id) {
+        return Optional.ofNullable(items.get(id));
     }
 
     @Override

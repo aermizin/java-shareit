@@ -1,18 +1,18 @@
 package ru.practicum.shareIt.item.service;
 
-import jakarta.validation.ValidationException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import ru.practicum.shareIt.exception.NotFoundException;
-import ru.practicum.shareIt.item.ItemMapper;
+import ru.practicum.shareIt.item.mapper.ItemMapper;
 import ru.practicum.shareIt.item.dao.ItemDao;
 import ru.practicum.shareIt.item.dto.ItemDto;
+import ru.practicum.shareIt.item.dto.ItemRequestDto;
 import ru.practicum.shareIt.item.model.Item;
 import ru.practicum.shareIt.user.service.UserService;
 
 import java.util.Collection;
-import java.util.Collections;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -32,11 +32,6 @@ public class ItemServiceImpl implements ItemService {
 
     @Override
     public Collection<ItemDto> searchItems(String text) {
-        if (text == null || text.isBlank()) {
-            log.warn("Поисковый запрос пуст или равен null");
-            return Collections.emptyList();
-        }
-
         return itemDao.searchItemsByText(text).stream()
                 .map(ItemMapper::toItemDto)
                 .collect(Collectors.toList());
@@ -44,46 +39,43 @@ public class ItemServiceImpl implements ItemService {
 
     @Override
     public ItemDto findItem(Long id) {
-        Item item = itemDao.getItem(id);
-        if (item == null) {
-            log.warn("Товар с id = {} не найден", id);
-            throw new NotFoundException("Товар не был найден");
-        }
-
-        return ItemMapper.toItemDto(item);
+        return itemDao.getItem(id)
+                .map(ItemMapper::toItemDto)
+                .orElseThrow(() -> new NotFoundException("Товар не был найден"));
     }
 
     @Override
-    public ItemDto create(Long ownerId, Item itemDto) {
-        Item item = initializeItem(ownerId, itemDto);
+    public ItemDto create(Long ownerId, ItemRequestDto itemRequest) {
+        Item item = initializeItem(ownerId, itemRequest);
         Item newItem = itemDao.createItem(item);
 
         return ItemMapper.toItemDto(newItem);
     }
 
     @Override
-    public ItemDto updated(Long itemId, Long ownerId, Item itemDto) {
-        Item item = initializeItem(ownerId, itemDto);
+    public ItemDto updated(Long itemId, Long ownerId, ItemRequestDto itemRequest) {
         validationUpdatedItem(itemId, ownerId);
+        Item item = initializeItem(ownerId, itemRequest);
 
         Item updatedItem = itemDao.updatedItem(itemId, item);
 
         return ItemMapper.toItemDto(updatedItem);
     }
 
-    public void validationUpdatedItem(Long itemId, Long ownerId) {
-        Item item = itemDao.getItem(itemId);
+    private void validationUpdatedItem(Long itemId, Long ownerId) {
+        Optional<Item> optItem = itemDao.getItem(itemId);
+        if (optItem.isPresent()) {
+            Item item = optItem.get();
 
-        if (!ownerId.equals(item.getOwner())) {
-            log.warn("Пользователь с id = {} хотел изменить товар с id = {} ", ownerId, itemId);
-            throw new ValidationException("Изменить товар может только его владелец");
+            if (!ownerId.equals(item.getOwner())) {
+                log.warn("Пользователь с id = {} хотел изменить товар с id = {} ", ownerId, itemId);
+                throw new NotFoundException("Изменить товар может только его владелец");
+            }
         }
     }
 
-    private Item initializeItem(Long ownerId, Item item) {
+    private Item initializeItem(Long ownerId, ItemRequestDto itemRequest) {
         userService.findUser(ownerId);
-        item.setOwner(ownerId);
-
-        return item;
+        return ItemMapper.toItem(ownerId, itemRequest);
     }
 }

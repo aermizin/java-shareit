@@ -7,12 +7,13 @@ import ru.practicum.shareIt.user.User;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 
 
 @Component
 @RequiredArgsConstructor
 public class InMemoryUserDao implements UserDao {
-    Map<Long, User> users = new HashMap<>();
+    private final Map<Long, User> users = new HashMap<>();
 
     private long nextUserId = 1;
 
@@ -22,8 +23,8 @@ public class InMemoryUserDao implements UserDao {
     }
 
     @Override
-    public User getUser(Long id) {
-        return users.get(id);
+    public Optional<User> getUser(Long id) {
+        return Optional.ofNullable(users.get(id));
     }
 
     @Override
@@ -47,14 +48,14 @@ public class InMemoryUserDao implements UserDao {
         return updatedUser;
     }
 
+    @Override
+    public void deleteUser(Long id) {
+        users.remove(id);
+    }
+
     public Boolean checkEmail(User validationUser) {
         return users.values().stream()
                 .filter(user -> !user.getId().equals(validationUser.getId()))
                 .anyMatch(user -> user.getEmail().equals(validationUser.getEmail()));
-    }
-
-    @Override
-    public void deleteUser(Long id) {
-        users.remove(id);
     }
 }

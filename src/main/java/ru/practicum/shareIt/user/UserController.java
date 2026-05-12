@@ -6,6 +6,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import ru.practicum.shareIt.user.dto.UserDto;
+import ru.practicum.shareIt.user.dto.UserRequestDto;
 import ru.practicum.shareIt.user.service.UserService;
 
 import java.util.Collection;
@@ -21,7 +22,6 @@ public class UserController {
     private final UserService userService;
 
     @GetMapping
-    @ResponseStatus(HttpStatus.OK)
     public Collection<UserDto> getUsers() {
         return userService.findAll();
     }
@@ -33,13 +33,13 @@ public class UserController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public UserDto createUser(@Valid @RequestBody User newUser) {
+    public UserDto createUser(@Valid @RequestBody UserRequestDto newUser) {
         return userService.create(newUser);
     }
 
     @PatchMapping("/{id}")
     public UserDto updatedUser(@PathVariable Long id,
-                               @RequestBody User updatedUser) {
+                               @RequestBody UserRequestDto updatedUser) {
         return userService.updated(id, updatedUser);
     }
 

@@ -7,9 +7,12 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+import ru.practicum.shareIt.response.ErrorResponse;
+import ru.practicum.shareIt.response.ValidationError;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.time.LocalDateTime;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Slf4j
 @RestControllerAdvice
@@ -17,33 +20,56 @@ public class ErrorHandler {
 
     @ExceptionHandler
     @ResponseStatus(HttpStatus.NOT_FOUND)
-    public Map<String, String> handleNotFoundException(final NotFoundException e) {
-        return Map.of("error", e.getMessage());
+    public ErrorResponse handleNotFoundException(final NotFoundException e) {
+        return ErrorResponse.of(
+                LocalDateTime.now(),
+                HttpStatus.NOT_FOUND.value(),
+                HttpStatus.NOT_FOUND.getReasonPhrase(),
+                e.getMessage()
+        );
     }
 
     @ExceptionHandler
     @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public Map<String, String> handleValidationException(final ValidationException e) {
-        return Map.of("error", e.getMessage());
+    public ErrorResponse handleValidationException(final ValidationException e) {
+        return ErrorResponse.of(
+                LocalDateTime.now(),
+                HttpStatus.BAD_REQUEST.value(),
+                HttpStatus.BAD_REQUEST.getReasonPhrase(),
+                e.getMessage()
+        );
     }
 
     @ExceptionHandler
     @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public Map<String, String> handleMethodArgumentNotValidException(final MethodArgumentNotValidException ex) {
+    public ErrorResponse handleMethodArgumentNotValidException(final MethodArgumentNotValidException ex) {
+        List<ValidationError> validationErrors = ex.getBindingResult().getAllErrors().stream()
+                .map(error -> new ValidationError(
+                        ((FieldError) error).getField(),
+                        error.getDefaultMessage()
+                ))
+                .collect(Collectors.toList());
 
-        Map<String, String> errors = new HashMap<>();
-        ex.getBindingResult().getAllErrors().forEach((error) -> {
-            String fieldName = ((FieldError) error).getField();
-            String errorMessage = error.getDefaultMessage();
-            errors.put(fieldName, errorMessage);
-        });
-        log.warn("Ошибки валидации: {}", errors);
-        return errors;
+        log.warn("Ошибки валидации: {}", validationErrors);
+
+        return ErrorResponse.ofValidationError(
+                LocalDateTime.now(),
+                HttpStatus.BAD_REQUEST.value(),
+                HttpStatus.BAD_REQUEST.getReasonPhrase(),
+                "Ошибка валидации входных данных",
+                validationErrors
+        );
     }
 
     @ExceptionHandler
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
-    public Map<String, String> handleInternalServerError(final Throwable e) {
-        return Map.of("error", "Произошла непредвиденная ошибка.");
+    public ErrorResponse handleInternalServerError(final Throwable e) {
+        log.error("Непредвиденная ошибка", e);
+        return ErrorResponse.of(
+                LocalDateTime.now(),
+                HttpStatus.INTERNAL_SERVER_ERROR.value(),
+                HttpStatus.INTERNAL_SERVER_ERROR.getReasonPhrase(),
+                "Произошла непредвиденная ошибка."
+        );
     }
 }

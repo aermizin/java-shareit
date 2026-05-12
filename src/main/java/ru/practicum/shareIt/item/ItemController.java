@@ -6,10 +6,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import ru.practicum.shareIt.item.dto.ItemDto;
-import ru.practicum.shareIt.item.model.Item;
+import ru.practicum.shareIt.item.dto.ItemRequestDto;
 import ru.practicum.shareIt.item.service.ItemService;
 
 import java.util.Collection;
+import java.util.Collections;
 
 /**
  * TODO Sprint add-controllers.
@@ -22,7 +23,6 @@ public class ItemController {
     private final ItemService itemService;
 
     @GetMapping
-    @ResponseStatus(HttpStatus.OK)
     public Collection<ItemDto> getItems(@RequestHeader("X-Sharer-User-Id") Long ownerId) {
         return itemService.findAll(ownerId);
     }
@@ -34,20 +34,24 @@ public class ItemController {
 
     @GetMapping("/search")
     public Collection<ItemDto> searchItems(@RequestParam String text) {
+        if (text == null || text.isBlank()) {
+            return Collections.emptyList();
+        }
+
         return itemService.searchItems(text);
     }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public ItemDto createItem(@RequestHeader("X-Sharer-User-Id") Long ownerId,
-                              @Valid @RequestBody Item newItem) {
+                              @Valid @RequestBody ItemRequestDto newItem) {
         return itemService.create(ownerId, newItem);
     }
 
     @PatchMapping("/{id}")
     public ItemDto updatedItem(@PathVariable Long id,
                                @RequestHeader("X-Sharer-User-Id") Long ownerId,
-                               @RequestBody Item updatedItem) {
+                               @RequestBody ItemRequestDto updatedItem) {
         return itemService.updated(id, ownerId, updatedItem);
     }
 }
