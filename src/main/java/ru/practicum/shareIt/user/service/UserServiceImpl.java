@@ -5,7 +5,6 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import ru.practicum.shareIt.exception.NotFoundException;
-import ru.practicum.shareIt.item.mapper.ItemMapper;
 import ru.practicum.shareIt.user.User;
 import ru.practicum.shareIt.user.dao.UserDao;
 import ru.practicum.shareIt.user.dto.UserDto;
@@ -13,7 +12,6 @@ import ru.practicum.shareIt.user.dto.UserRequestDto;
 import ru.practicum.shareIt.user.mapper.UserMapper;
 
 import java.util.Collection;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
