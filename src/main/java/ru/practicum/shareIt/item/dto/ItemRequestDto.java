@@ -14,4 +14,6 @@ public class ItemRequestDto {
 
         @NotNull(message = "Статус товара не может быть null.")
         private Boolean available;
+
+        private Long request;
 }
