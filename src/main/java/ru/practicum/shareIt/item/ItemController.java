@@ -6,12 +6,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import ru.practicum.shareIt.item.dto.*;
-import ru.practicum.shareIt.item.model.Comment;
 import ru.practicum.shareIt.item.service.ItemService;
 
 import java.util.Collection;
 import java.util.Collections;
-import java.util.List;
 
 /**
  * TODO Sprint add-controllers.

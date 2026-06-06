@@ -26,9 +26,11 @@ public interface BookingRepository extends JpaRepository<Booking, Long> {
     Optional<BookingResponseDto> findBookingDtoById(@Param("bookingId") Long bookingId);
 
     List<Booking> findByBookerIdOrderByStartDesc(Long bookerId);
+
     List<Booking> findByItem_Owner_IdOrderByStartDesc(Long ownerId);
 
     List<Booking> findByBookerIdAndStatusOrderByStartDesc(Long bookerId, String status);
+
     List<Booking> findByItem_Owner_IdAndStatusOrderByStartDesc(Long ownerId, String status);
 
     @Query(value = "SELECT DISTINCT ON (b.item_id) b.* " +
