@@ -17,6 +17,7 @@ import java.util.Objects;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@NamedEntityGraph(name = "Item.comments", attributeNodes = @NamedAttributeNode("comments"))
 public class Item {
 
     @Id

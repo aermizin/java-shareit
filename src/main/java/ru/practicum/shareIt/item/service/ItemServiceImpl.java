@@ -37,11 +37,11 @@ public class ItemServiceImpl implements ItemService {
     private final ItemRequestRepository itemRequestRepository;
 
     @Override
-    public List<ItemOwnerResponseDto> findAll(Long ownerId) {
+    public List<ItemFullResponseDto> findAll(Long ownerId) {
         userRepository.findById(ownerId)
                 .orElseThrow(() -> new NotFoundException("Пользователь с указанным ID не найден"));
 
-        List<Item> items = itemRepository.findByOwnerId(ownerId);
+        List<Item> items = itemRepository.findItemsFullByOwnerId(ownerId);
 
         if (items.isEmpty()) {
             log.warn("Не найдено ни одной вещи у пользователя с ID = {}", ownerId);
@@ -61,26 +61,17 @@ public class ItemServiceImpl implements ItemService {
                 .map(item -> {
                     Booking last = lastBookingMap.get(item.getId());
                     Booking next = nextBookingMap.get(item.getId());
-                    return new ItemOwnerResponseDto(
-                            item.getId(),
-                            item.getName(),
-                            item.getDescription(),
-                            item.getAvailable(),
-                            last != null ? last.getEnd() : null,
-                            next != null ? next.getStart() : null,
-                            item.getComments().stream().map(CommentMapper::toCommentDto).collect(Collectors.toList()),
-                            item.getRequest() != null ? item.getRequest().getId() : null
-                    );
+                    return ItemMapper.toItemFullDto(item, last, next);
                 })
                 .collect(Collectors.toList());
     }
 
     @Override
-    public ItemOwnerResponseDto findItemById(Long userId, Long itemId) {
-        Item item = itemRepository.findById(itemId)
-                        .orElseThrow(() -> new NotFoundException("Вещь с указанным ID не найдена"));
+    public ItemFullResponseDto findItemById(Long userId, Long itemId) {
         User user = userRepository.findById(userId)
-                        .orElseThrow(() -> new NotFoundException("Пользователь с указанным ID не найден"));
+                .orElseThrow(() -> new NotFoundException("Пользователь с указанным ID не найден"));
+        Item item = itemRepository.findItemFullById(itemId)
+                        .orElseThrow(() -> new NotFoundException("Вещь с указанным ID не найдена"));
 
         List<Long> itemIds = List.of(itemId);
         LocalDateTime now = LocalDateTime.now();
@@ -99,16 +90,7 @@ public class ItemServiceImpl implements ItemService {
             next = nextBookingMap.get(itemId);
         }
 
-        return new ItemOwnerResponseDto(
-                item.getId(),
-                item.getName(),
-                item.getDescription(),
-                item.getAvailable(),
-                last != null ? last.getEnd() : null,
-                next != null ? next.getStart() : null,
-                item.getComments().stream().map(CommentMapper::toCommentDto).collect(Collectors.toList()),
-                item.getRequest() != null ? item.getRequest().getId() : null
-        );
+        return ItemMapper.toItemFullDto(item, last, next);
     }
 
     @Override

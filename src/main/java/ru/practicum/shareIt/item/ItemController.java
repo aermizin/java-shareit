@@ -22,13 +22,13 @@ public class ItemController {
     private final ItemService itemService;
 
     @GetMapping
-    public Collection<ItemOwnerResponseDto> getItems(@RequestHeader("X-Sharer-User-Id") Long ownerId) {
+    public Collection<ItemFullResponseDto> getItems(@RequestHeader("X-Sharer-User-Id") Long ownerId) {
         return itemService.findAll(ownerId);
     }
 
     @GetMapping("/{itemId}")
-    public ItemOwnerResponseDto findItemById(@RequestHeader("X-Sharer-User-Id") Long userId,
-                                        @PathVariable Long itemId) {
+    public ItemFullResponseDto findItemById(@RequestHeader("X-Sharer-User-Id") Long userId,
+                                            @PathVariable Long itemId) {
         return itemService.findItemById(userId, itemId);
     }
 
@@ -44,7 +44,7 @@ public class ItemController {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public ItemResponseDto createItem(@RequestHeader("X-Sharer-User-Id") Long ownerId,
-                              @Valid @RequestBody ItemRequestDto newItem) {
+                                      @Valid @RequestBody ItemRequestDto newItem) {
         return itemService.create(ownerId, newItem);
     }
 
@@ -58,8 +58,8 @@ public class ItemController {
 
     @PatchMapping("/{id}")
     public ItemResponseDto updatedItem(@PathVariable Long id,
-                               @RequestHeader("X-Sharer-User-Id") Long ownerId,
-                               @RequestBody ItemRequestDto updatedItem) {
+                                       @RequestHeader("X-Sharer-User-Id") Long ownerId,
+                                       @RequestBody ItemRequestDto updatedItem) {
         return itemService.updated(id, ownerId, updatedItem);
     }
 }
