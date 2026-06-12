@@ -5,8 +5,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-import ru.practicum.shareIt.item.dto.ItemDto;
-import ru.practicum.shareIt.item.dto.ItemRequestDto;
+import ru.practicum.shareIt.item.dto.*;
 import ru.practicum.shareIt.item.service.ItemService;
 
 import java.util.Collection;
@@ -23,17 +22,18 @@ public class ItemController {
     private final ItemService itemService;
 
     @GetMapping
-    public Collection<ItemDto> getItems(@RequestHeader("X-Sharer-User-Id") Long ownerId) {
+    public Collection<ItemFullResponseDto> getItems(@RequestHeader("X-Sharer-User-Id") Long ownerId) {
         return itemService.findAll(ownerId);
     }
 
-    @GetMapping("/{id}")
-    public ItemDto findItem(@PathVariable Long id) {
-        return itemService.findItem(id);
+    @GetMapping("/{itemId}")
+    public ItemFullResponseDto findItemById(@RequestHeader("X-Sharer-User-Id") Long userId,
+                                            @PathVariable Long itemId) {
+        return itemService.findItemById(userId, itemId);
     }
 
     @GetMapping("/search")
-    public Collection<ItemDto> searchItems(@RequestParam String text) {
+    public Collection<ItemResponseDto> searchItems(@RequestParam String text) {
         if (text == null || text.isBlank()) {
             return Collections.emptyList();
         }
@@ -43,15 +43,23 @@ public class ItemController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public ItemDto createItem(@RequestHeader("X-Sharer-User-Id") Long ownerId,
-                              @Valid @RequestBody ItemRequestDto newItem) {
+    public ItemResponseDto createItem(@RequestHeader("X-Sharer-User-Id") Long ownerId,
+                                      @Valid @RequestBody ItemRequestDto newItem) {
         return itemService.create(ownerId, newItem);
     }
 
+    @PostMapping("/{itemId}/comment")
+    @ResponseStatus(HttpStatus.CREATED)
+    public CommentResponseDto createComment(@RequestHeader("X-Sharer-User-Id") Long authorId,
+                                            @PathVariable Long itemId,
+                                            @RequestBody CommentRequestDto commentRequest) {
+        return itemService.createComment(authorId, itemId, commentRequest);
+    }
+
     @PatchMapping("/{id}")
-    public ItemDto updatedItem(@PathVariable Long id,
-                               @RequestHeader("X-Sharer-User-Id") Long ownerId,
-                               @RequestBody ItemRequestDto updatedItem) {
+    public ItemResponseDto updatedItem(@PathVariable Long id,
+                                       @RequestHeader("X-Sharer-User-Id") Long ownerId,
+                                       @RequestBody ItemRequestDto updatedItem) {
         return itemService.updated(id, ownerId, updatedItem);
     }
 }

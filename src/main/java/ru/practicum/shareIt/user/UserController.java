@@ -5,7 +5,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-import ru.practicum.shareIt.user.dto.UserDto;
+import ru.practicum.shareIt.user.dto.UserResponseDto;
 import ru.practicum.shareIt.user.dto.UserRequestDto;
 import ru.practicum.shareIt.user.service.UserService;
 
@@ -22,24 +22,24 @@ public class UserController {
     private final UserService userService;
 
     @GetMapping
-    public Collection<UserDto> getUsers() {
+    public Collection<UserResponseDto> getUsers() {
         return userService.findAll();
     }
 
     @GetMapping("/{id}")
-    public UserDto findUser(@PathVariable Long id) {
+    public UserResponseDto findUser(@PathVariable Long id) {
         return userService.findUser(id);
     }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public UserDto createUser(@Valid @RequestBody UserRequestDto newUser) {
+    public UserResponseDto createUser(@Valid @RequestBody UserRequestDto newUser) {
         return userService.create(newUser);
     }
 
     @PatchMapping("/{id}")
-    public UserDto updatedUser(@PathVariable Long id,
-                               @RequestBody UserRequestDto updatedUser) {
+    public UserResponseDto updatedUser(@PathVariable Long id,
+                                       @RequestBody UserRequestDto updatedUser) {
         return userService.updated(id, updatedUser);
     }
 
