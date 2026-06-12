@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="77005304-d285-4da6-a9b5-58bc274b72d0" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/java-shareit/docker-compose.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/java-shareit/server/Dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/java-shareit/server/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/java-shareit/server/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.github/workflows/api-tests.yml" beforeDir="false" afterPath="$PROJECT_DIR$/java-shareit/.github/workflows/api-tests.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/java-shareit/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/java-shareit/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/checkstyle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/java-shareit/checkstyle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lombok.config" beforeDir="false" afterPath="$PROJECT_DIR$/java-shareit/lombok.config" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/java-shareit/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/practicum/shareIt/ShareItApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/java-shareit/server/src/main/java/ru/practicum/shareIt/ShareItApp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/practicum/shareIt/booking/BookingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/java-shareit/server/src/main/java/ru/practicum/shareIt/booking/BookingController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/practicum/shareIt/booking/dto/BookingRequestDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/java-shareit/server/src/main/java/ru/practicum/shareIt/booking/dto/BookingRequestDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/practicum/shareIt/booking/dto/BookingResponseDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/java-shareit/server/src/main/java/ru/practicum/shareIt/booking/dto/BookingResponseDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/practicum/shareIt/booking/mapper/BookingMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/java-shareit/server/src/main/java/ru/practicum/shareIt/booking/mapper/BookingMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/practicum/shareIt/booking/model/Booking.java" beforeDir="false" afterPath="$PROJECT_DIR$/java-shareit/server/src/main/java/ru/practicum/shareIt/booking/model/Booking.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/practicum/shareIt/booking/model/BookingStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/java-shareit/server/src/main/java/ru/practicum/shareIt/booking/model/BookingStatus.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/practicum/shareIt/booking/repository/BookingRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/java-shareit/server/src/main/java/ru/practicum/shareIt/booking/repository/BookingRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/practicum/shareIt/booking/service/BookingService.java" beforeDir="false" afterPath="$PROJECT_DIR$/java-shareit/server/src/main/java/ru/practicum/shareIt/booking/service/BookingService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/practicum/shareIt/booking/service/BookingServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/java-shareit/server/src/main/java/ru/practicum/shareIt/booking/service/BookingServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/practicum/shareIt/exception/ErrorHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/java-shareit/server/src/main/java/ru/practicum/shareIt/exception/ErrorHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/practicum/shareIt/exception/NotFoundException.java" beforeDir="false" afterPath="$PROJECT_DIR$/java-shareit/server/src/main/java/ru/practicum/shareIt/exception/NotFoundException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/practicum/shareIt/exception/ValidationException.java" beforeDir="false" afterPath="$PROJECT_DIR$/java-shareit/server/src/main/java/ru/practicum/shareIt/exception/ValidationException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/practicum/shareIt/item/ItemController.java" beforeDir="false" afterPath="$PROJECT_DIR$/java-shareit/server/src/main/java/ru/practicum/shareIt/item/ItemController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/practicum/shareIt/item/dto/CommentRequestDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/java-shareit/server/src/main/java/ru/practicum/shareIt/item/dto/CommentRequestDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/practicum/shareIt/item/dto/CommentResponseDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/java-shareit/server/src/main/java/ru/practicum/shareIt/item/dto/CommentResponseDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/practicum/shareIt/item/dto/ItemOwnerResponseDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/java-shareit/server/src/main/java/ru/practicum/shareIt/item/dto/ItemOwnerResponseDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/practicum/shareIt/item/dto/ItemRequestDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/java-shareit/server/src/main/java/ru/practicum/shareIt/item/dto/ItemRequestDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/practicum/shareIt/item/dto/ItemResponseDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/java-shareit/server/src/main/java/ru/practicum/shareIt/item/dto/ItemResponseDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/practicum/shareIt/item/mapper/CommentMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/java-shareit/server/src/main/java/ru/practicum/shareIt/item/mapper/CommentMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/practicum/shareIt/item/mapper/ItemMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/java-shareit/server/src/main/java/ru/practicum/shareIt/item/mapper/ItemMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/practicum/shareIt/item/model/Comment.java" beforeDir="false" afterPath="$PROJECT_DIR$/java-shareit/server/src/main/java/ru/practicum/shareIt/item/model/Comment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/practicum/shareIt/item/model/Item.java" beforeDir="false" afterPath="$PROJECT_DIR$/java-shareit/server/src/main/java/ru/practicum/shareIt/item/model/Item.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/practicum/shareIt/item/repository/CommentRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/java-shareit/server/src/main/java/ru/practicum/shareIt/item/repository/CommentRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/practicum/shareIt/item/repository/ItemRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/java-shareit/server/src/main/java/ru/practicum/shareIt/item/repository/ItemRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/practicum/shareIt/item/service/ItemService.java" beforeDir="false" afterPath="$PROJECT_DIR$/java-shareit/server/src/main/java/ru/practicum/shareIt/item/service/ItemService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/practicum/shareIt/item/service/ItemServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/java-shareit/server/src/main/java/ru/practicum/shareIt/item/service/ItemServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/practicum/shareIt/request/ItemRequestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/java-shareit/server/src/main/java/ru/practicum/shareIt/request/ItemRequestController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/practicum/shareIt/request/dto/ItemRequestResponseDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/java-shareit/server/src/main/java/ru/practicum/shareIt/request/dto/ItemRequestResponseDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/practicum/shareIt/request/model/ItemRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/java-shareit/server/src/main/java/ru/practicum/shareIt/request/model/ItemRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/practicum/shareIt/request/repository/ItemRequestRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/java-shareit/server/src/main/java/ru/practicum/shareIt/request/repository/ItemRequestRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/practicum/shareIt/response/ErrorResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/java-shareit/server/src/main/java/ru/practicum/shareIt/response/ErrorResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/practicum/shareIt/response/ValidationError.java" beforeDir="false" afterPath="$PROJECT_DIR$/java-shareit/server/src/main/java/ru/practicum/shareIt/response/ValidationError.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/practicum/shareIt/user/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/java-shareit/server/src/main/java/ru/practicum/shareIt/user/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/practicum/shareIt/user/dto/UserRequestDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/java-shareit/server/src/main/java/ru/practicum/shareIt/user/dto/UserRequestDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/practicum/shareIt/user/dto/UserResponseDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/java-shareit/server/src/main/java/ru/practicum/shareIt/user/dto/UserResponseDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/practicum/shareIt/user/mapper/UserMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/java-shareit/server/src/main/java/ru/practicum/shareIt/user/mapper/UserMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/practicum/shareIt/user/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/java-shareit/server/src/main/java/ru/practicum/shareIt/user/model/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/practicum/shareIt/user/repository/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/java-shareit/server/src/main/java/ru/practicum/shareIt/user/repository/UserRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/practicum/shareIt/user/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/java-shareit/server/src/main/java/ru/practicum/shareIt/user/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/practicum/shareIt/user/service/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/java-shareit/server/src/main/java/ru/practicum/shareIt/user/service/UserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application-test.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/logback.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/schema.sql" beforeDir="false" afterPath="$PROJECT_DIR$/java-shareit/server/src/main/resources/schema.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/ru/practicum/shareIt/ShareItTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/java-shareit/server/src/test/java/ru/practicum/shareIt/ShareItTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/suppressions.xml" beforeDir="false" afterPath="$PROJECT_DIR$/java-shareit/suppressions.xml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="add-bokings" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;aermizin&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;git@github.com:aermizin/java-shareit.git&quot;,
+    &quot;accountId&quot;: &quot;365817e8-df78-4fb4-8b4a-d2aed179f9ff&quot;
+  }
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 5
+}</component>
+  <component name="ProjectId" id="3F2vdBhfoPJagUsC7NoaUMLajwN" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.ShareItApp.executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "git-widget-placeholder": "add-item-requests-and-gateway",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/Artem/Desktop/Projects/beak/java",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.15332031",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "configurable.group.appearance"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Artem\Desktop\Projects\beak\java\java-shareit" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="ShareItApp" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ru.practicum.shareIt.ShareItApp" />
+      <module name="shareit" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ru.practicum.shareIt.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="java" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="java" />
+      <option name="filePath" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.ShareItApp" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="77005304-d285-4da6-a9b5-58bc274b72d0" name="Changes" comment="" />
+      <created>1781286063104</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1781286063104</updated>
+    </task>
+    <servers />
+  </component>
+</project>

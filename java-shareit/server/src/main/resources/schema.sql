@@ -45,8 +45,8 @@ CREATE TABLE IF NOT EXISTS comments (
 --Create a table Bookings
 CREATE TABLE IF NOT EXISTS bookings (
     id BIGINT GENERATED ALWAYS AS IDENTITY NOT NULL,
-    start_date TIMESTAMP WITHOUT TIME ZONE NOT NULL,
-    end_date TIMESTAMP WITHOUT TIME ZONE NOT NULL,
+    start_date TIMESTAMP WITH TIME ZONE NOT NULL,
+    end_date TIMESTAMP WITH TIME ZONE NOT NULL,
     item_id BIGINT NOT NULL,
     booker_id BIGINT NOT NULL,
     status VARCHAR(50) NOT NULL,
@@ -54,7 +54,6 @@ CREATE TABLE IF NOT EXISTS bookings (
     CONSTRAINT fk_booking_to_item FOREIGN KEY (item_id) REFERENCES items(id),
     CONSTRAINT fk_booking_to_user FOREIGN KEY (booker_id) REFERENCES users(id)
 );
-
 
 
 
