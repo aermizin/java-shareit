@@ -9,7 +9,7 @@ public class UserRequestDto {
     @NotBlank(message = "Имя пользователя не может быть null или пустым.")
     private String name;
 
-    @Email(message = "Email пользователя должен быть заполнен корректно.")
     @NotBlank(message = "Email пользователя не может быть null или пустым.")
+    @Email(message = "Email пользователя должен быть заполнен корректно.")
     private String email;
 }

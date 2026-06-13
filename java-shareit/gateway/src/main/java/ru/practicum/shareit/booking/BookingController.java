@@ -10,8 +10,7 @@ import jakarta.validation.constraints.Positive;
 import jakarta.validation.constraints.PositiveOrZero;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import ru.practicum.shareit.booking.dto.BookItemRequestDto;
-import ru.practicum.shareit.booking.dto.BookingState;
+import ru.practicum.shareit.booking.dto.BookingRequestDto;
 
 
 @Controller
@@ -35,7 +34,7 @@ public class BookingController {
 
     @GetMapping("/owner")
     public ResponseEntity<Object> getOwnerBookings(@RequestHeader("X-Sharer-User-Id") long userId,
-                                                   @RequestParam(defaultValue = "all") String stateParam) {
+                                                   @RequestParam(name = "state", defaultValue = "all") String stateParam) {
         BookingState state = BookingState.from(stateParam)
                 .orElseThrow(() -> new IllegalArgumentException("Unknown state: " + stateParam));
         return bookingClient.getOwnerBookings(userId, state);
@@ -50,7 +49,7 @@ public class BookingController {
 
     @PostMapping
     public ResponseEntity<Object> createBooking(@RequestHeader("X-Sharer-User-Id") long userId,
-                                                @RequestBody @Valid BookItemRequestDto requestDto) {
+                                                @RequestBody @Valid BookingRequestDto requestDto) {
         log.info("Creating booking {}, userId={}", requestDto, userId);
         return bookingClient.createBooking(userId, requestDto);
     }

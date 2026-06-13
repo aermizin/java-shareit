@@ -36,8 +36,8 @@ public class ItemController {
 
     @GetMapping("/search")
     public ResponseEntity<Object> findItemsByText(@RequestHeader("X-Sharer-User-Id") long userId,
-                                                  @RequestParam @Positive  String text) {
-        if (text == null || text.isBlank()) {
+                                                  @RequestParam String text) {
+        if (text.isBlank()) {
             log.info("The received request with the text ={} parameter is null or empty.", text);
             return ResponseEntity.ok(Collections.emptyList());
         }

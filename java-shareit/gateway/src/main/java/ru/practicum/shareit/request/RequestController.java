@@ -1,5 +1,6 @@
 package ru.practicum.shareit.request;
 
+import jakarta.validation.Valid;
 import jakarta.validation.constraints.Positive;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -35,7 +36,7 @@ public class RequestController {
 
     @PostMapping
     public ResponseEntity<Object> createRequest(@RequestHeader("X-Sharer-User-Id") long userId,
-                                                @RequestBody RequestDto requestDto) {
+                                                @RequestBody @Valid RequestDto requestDto) {
         return requestClient.createRequest(userId, requestDto);
     }
 }
