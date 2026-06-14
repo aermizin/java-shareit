@@ -46,12 +46,12 @@
             <version>1.18.36</version>
             <scope>provided</scope>
         </dependency>
-        <dependency>
+<!--        <dependency>
             <groupId>ru.practicum</groupId>
             <artifactId>shareit-server</artifactId>
             <version>0.0.1-SNAPSHOT</version>
             <scope>test</scope>
-        </dependency>
+        </dependency>-->
     </dependencies>
 
     <build>
