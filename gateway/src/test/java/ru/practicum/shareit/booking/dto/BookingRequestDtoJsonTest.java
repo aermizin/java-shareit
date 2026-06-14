@@ -18,13 +18,7 @@ public class BookingRequestDtoJsonTest {
 
     @Test
     void deserialize_validDates_success() throws Exception {
-        String content = """
-                {
-                    "itemId": 101,
-                    "start": "2025-06-15T09:00:00",
-                    "end": "2025-06-20T18:00:00"
-                }
-                """;
+        String content = "{ \"itemId\": 101, \"start\": \"2025-06-15T09:00:00\", \"end\": \"2025-06-20T18:00:00\" }";
         BookingRequestDto dto = json.parse(content).getObject();
         assertThat(dto.getItemId()).isEqualTo(101);
         assertThat(dto.getStart()).isEqualTo(Instant.parse("2025-06-15T09:00:00Z"));
@@ -33,11 +27,7 @@ public class BookingRequestDtoJsonTest {
 
     @Test
     void deserialize_missingStartAndEnd() throws Exception {
-        String content = """
-        {
-            "itemId": 123
-        }
-        """;
+        String content = "{ \"itemId\": 123 }";
         BookingRequestDto dto = json.parse(content).getObject();
         assertThat(dto.getItemId()).isEqualTo(123);
         assertThat(dto.getStart()).isNull();
@@ -46,26 +36,14 @@ public class BookingRequestDtoJsonTest {
 
     @Test
     void deserialize_invalidDateValue_throwsException() {
-        String content = """
-        {
-            "itemId": 1,
-            "start": "2025-13-45T99:00:00",
-            "end": "2025-06-20T18:00:00"
-        }
-        """;
+        String content = "{ \"itemId\": 1, \"start\": \"2025-13-45T99:00:00\", \"end\": \"2025-06-20T18:00:00\" }";
         assertThatThrownBy(() -> json.parse(content))
                 .isInstanceOf(InvalidFormatException.class);
     }
 
     @Test
     void deserialize_startInvalidFormat_throwsException() {
-        String content = """
-            {
-                "itemId": "123",
-                "start": "not a date",
-                "end": "2025-06-20T18:00:00"
-            }
-            """;
+        String content = "{ \"itemId\": \"123\", \"start\": \"not a date\", \"end\": \"2025-06-20T18:00:00\" }";
         assertThatThrownBy(() -> json.parse(content))
                 .isInstanceOf(InvalidFormatException.class);
     }
