@@ -147,6 +147,7 @@ public class BookingControllerTest {
                         .content(mapper.writeValueAsString(request)))
                 .andExpect(status().isBadRequest());
     }
+
     @Test
     void updateBookingStatus_success() throws Exception {
         long bookingId = 1L;

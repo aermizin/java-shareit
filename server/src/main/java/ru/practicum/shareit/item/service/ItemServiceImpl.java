@@ -163,7 +163,7 @@ public class ItemServiceImpl implements ItemService {
         User owner = userRepository.findById(userId).orElseThrow(() -> new NotFoundException("Пользователь с указанным" +
                 "ID не найден"));
         Request request = null;
-        if (itemRequest.getRequestId()!= null) {
+        if (itemRequest.getRequestId() != null) {
             request = itemRequestRepository.findById(itemRequest.getRequestId())
                     .orElseThrow(() -> new NotFoundException("Запрос с указанным ID на создание не найден"));
         }
