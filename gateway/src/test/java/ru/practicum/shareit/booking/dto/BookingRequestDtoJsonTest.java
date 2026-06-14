@@ -17,6 +17,21 @@ public class BookingRequestDtoJsonTest {
     private JacksonTester<BookingRequestDto> json;
 
     @Test
+    void serialize_validDates_success() throws Exception {
+
+        BookingRequestDto dto = new BookingRequestDto(
+                101,
+                Instant.parse("2025-06-15T09:00:00Z"),
+                Instant.parse("2025-06-20T18:00:00Z")
+        );
+
+        assertThat(json.write(dto))
+                .hasJsonPathValue("$.itemId", 101)
+                .hasJsonPathValue("$.start", "2025-06-15T09:00:00")
+                .hasJsonPathValue("$.end", "2025-06-20T18:00:00");
+    }
+
+    @Test
     void deserialize_validDates_success() throws Exception {
         String content = "{ \"itemId\": 101, \"start\": \"2025-06-15T09:00:00\", \"end\": \"2025-06-20T18:00:00\" }";
         BookingRequestDto dto = json.parse(content).getObject();
