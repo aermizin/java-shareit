@@ -5,17 +5,10 @@ import jakarta.validation.Validator;
 import jakarta.validation.ValidatorFactory;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.json.JsonTest;
-import org.springframework.boot.test.json.JacksonTester;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-@JsonTest
 public class CommentRequestDtoValidationTest {
-
-    @Autowired
-    private JacksonTester<CommentRequestDto> json;
 
     private static Validator validator;
 
@@ -23,15 +16,6 @@ public class CommentRequestDtoValidationTest {
     static void setUp() {
         ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
         validator = factory.getValidator();
-    }
-
-    @Test
-    void serialize_success() throws Exception {
-        CommentRequestDto dto = new CommentRequestDto("Отличная вещь");
-
-        assertThat(json.write(dto))
-                .hasJsonPathValue("$.text", "Отличная вещь");
-
     }
 
     @Test

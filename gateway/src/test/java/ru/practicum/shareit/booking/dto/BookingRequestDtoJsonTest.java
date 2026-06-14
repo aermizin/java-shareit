@@ -13,6 +13,7 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 
 @JsonTest
 public class BookingRequestDtoJsonTest {
+
     @Autowired
     private JacksonTester<BookingRequestDto> json;
 
@@ -34,6 +35,7 @@ public class BookingRequestDtoJsonTest {
     @Test
     void deserialize_validDates_success() throws Exception {
         String content = "{ \"itemId\": 101, \"start\": \"2025-06-15T09:00:00\", \"end\": \"2025-06-20T18:00:00\" }";
+
         BookingRequestDto dto = json.parse(content).getObject();
         assertThat(dto.getItemId()).isEqualTo(101);
         assertThat(dto.getStart()).isEqualTo(Instant.parse("2025-06-15T09:00:00Z"));
