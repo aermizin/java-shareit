@@ -3,6 +3,7 @@ package ru.practicum.shareit.exception;
 import jakarta.validation.ConstraintViolationException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.MissingRequestHeaderException;
@@ -51,6 +52,17 @@ public class ErrorHandler {
                 "Ошибка валидации входных данных",
                 validationErrors
         );
+    }
+
+    @ExceptionHandler(HttpMessageNotReadableException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public ErrorResponse handleHttpMessageNotReadable(HttpMessageNotReadableException e) {
+        log.warn("Malformed JSON request: {}", e.getMessage());
+        return ErrorResponse.of(
+                Instant.now(),
+                HttpStatus.BAD_REQUEST.value(),
+                HttpStatus.BAD_REQUEST.getReasonPhrase(),
+                "Ошибка чтения JSON: " + e.getMessage());
     }
 
     @ExceptionHandler(MissingRequestHeaderException.class)

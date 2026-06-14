@@ -196,6 +196,15 @@ public class ItemControllerTest {
     }
 
     @Test
+    void createItem_withEmptyBody_shouldReturnBadRequest() throws Exception {
+        mvc.perform(post("/items")
+                        .header("X-Sharer-User-Id", 1L)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(""))
+                .andExpect(status().isBadRequest());
+    }
+
+    @Test
     void createItem_withoutUserIdHeader_shouldReturnBadRequest() throws Exception {
         itemRequestDto = new ItemRequestDto();
         itemRequestDto.setName("Valid name");

@@ -248,6 +248,15 @@ public class BookingControllerTest {
     }
 
     @Test
+    void createBooking_withEmptyBody_shouldReturnBadRequest() throws Exception {
+        mvc.perform(post("/bookings")
+                        .header("X-Sharer-User-Id", 1L)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(""))
+                .andExpect(status().isBadRequest());
+    }
+
+    @Test
     void createBooking_withoutUserIdHeader_shouldReturnBadRequest() throws Exception {
         BookingRequestDto request = new BookingRequestDto();
         request.setItemId(1L);

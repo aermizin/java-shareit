@@ -141,6 +141,27 @@ public class RequestControllerTest  {
     }
 
     @Test
+    void createRequest_withDescriptionOnlySpaces_shouldReturnBadRequest() throws Exception {
+        RequestDto requestDto = new RequestDto();
+        requestDto.setDescription("   ");
+
+        mvc.perform(post("/requests")
+                        .header("X-Sharer-User-Id", 1L)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(mapper.writeValueAsString(requestDto)))
+                .andExpect(status().isBadRequest());
+    }
+
+    @Test
+    void createRequest_withEmptyBody_shouldReturnBadRequest() throws Exception {
+        mvc.perform(post("/requests")
+                        .header("X-Sharer-User-Id", 1L)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(""))
+                .andExpect(status().isBadRequest());
+    }
+
+    @Test
     void createRequest_withDescriptionIsNull_shouldReturnBadRequest() throws Exception {
         RequestDto requestDto = new RequestDto();
         requestDto.setDescription(null);

@@ -137,7 +137,24 @@ public class UserControllerTest {
                 .andExpect(status().isBadRequest());
     }
 
-    // DELETE /users/{userId}
+    @Test
+    void updateUser_withNegativeUserId_shouldReturnBadRequest() throws Exception {
+        long userId = -1L;
+        mvc.perform(patch("/users/{userId}", userId)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content("{}"))
+                .andExpect(status().isBadRequest());
+    }
+
+    @Test
+    void updateUser_withEmptyBody_shouldReturnBadRequest() throws Exception {
+        long userId = 1L;
+        mvc.perform(patch("/users/{userId}", userId)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(""))
+                .andExpect(status().isBadRequest());
+    }
+
     @Test
     void deleteUser_success() throws Exception {
         long userId = 1L;
