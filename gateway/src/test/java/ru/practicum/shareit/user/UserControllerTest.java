@@ -12,7 +12,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.web.bind.annotation.*;
 import ru.practicum.shareit.ShareItGateway;
-import ru.practicum.shareit.user.UserClient;
 import ru.practicum.shareit.user.dto.UserRequestDto;
 
 import java.nio.charset.StandardCharsets;
